@@ -1,6 +1,6 @@
 import React from "react";
-import { useApp } from "../context/AppContext";
-import ActivityItem from "../components/ActivityItem";
+import { useApp } from "../context/TrackerContext";
+import ActivityItem from "../components/Navigation";
 
 const List = () => {
 	const { items, loading } = useApp();

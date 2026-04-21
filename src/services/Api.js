@@ -1,23 +1,15 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://t4e-testserver.onrender.com/api';
+const API_URL = 'https://t4e-testserver.onrender.com/api';
 
-const STUDENT_ID = "e0323042";
-const PASSWORD = "572981";
-const SET = "B";
-
-export const getTokenInfo = async () => {
-  const response = await axios.post(`${BASE_URL}/public/token`, {
-    studentId: STUDENT_ID,
-    password: PASSWORD,
-    set: SET
-  });
-  return response.data;
+export const fetchToken = async (studentId, set, password) => {
+  const res = await axios.post(`${API_URL}/public/token`, { studentId, set, password });
+  return res.data;
 };
 
-export const getMovies = async (token, dataUrl) => {
-  const response = await axios.get(`${BASE_URL}${dataUrl}`, {
+export const fetchFitnessData = async (token, endpoint) => {
+  const res = await axios.get(`${API_URL}${endpoint}`, {
     headers: { Authorization: `Bearer ${token}` }
   });
-  return response.data;
+  return res.data;
 };
